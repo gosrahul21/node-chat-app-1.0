@@ -50,6 +50,16 @@
         </ul>
         </script>
 
+        <script id="location-template" type="text/html">
+            <div id class= "message">
+                <p>
+                    <span class="message__name">{{user}}</span>
+                    <span class="message__meta">{{created_at}} - </span>
+                </p>
+                <p><a href={{text}}>My Current Location</a></p>
+            </div>
+        </script>
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>

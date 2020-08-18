@@ -12,9 +12,11 @@ const $messages =document.querySelector('#messages');
 
 
 
+
 //templates
 const messageTemplate = document.querySelector('#message-template').innerHTML;
-const sidebarTemplate =document.querySelector("#sidebar-template").innerHTML
+const sidebarTemplate =document.querySelector("#sidebar-template").innerHTML;
+const locationTemplate = document.querySelector('#location-template').innerHTML;
 
 const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 
@@ -58,6 +60,17 @@ socket.on('message',({user,text,created_at})=>{
     autoscroll();
 
 });
+
+socket.on('location',({user,text,created_at})=>{
+    const html =Mustache.render(locationTemplate,{
+        user,
+        text,
+        created_at:moment(created_at).format('H:m a')
+    });
+    $messages.insertAdjacentHTML('beforeend',html);
+    autoscroll();
+
+})
 
 
 

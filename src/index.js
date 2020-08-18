@@ -82,8 +82,10 @@ io.on('connection',(socket)=>{
 
     socket.on('shareposition',(pos,cb)=>{
         let posi= `https://www.google.com/maps?q=${pos.latitude},${pos.longitude}`;
+        const user =getUser(socket.id);
+        // socket.broadcast.emit('message',posi);
+        io.to(user.room).emit('location',message_text(posi,user.username));
         cb();
-        socket.broadcast.emit('message',posi);
     });
     
     
